@@ -8,9 +8,10 @@ interface PageHeroProps {
   subtitle?: string;
   image?: string;
   breadcrumb?: { label: string; to?: string }[];
+  children?: React.ReactNode;
 }
 
-export default function PageHero({ label, title, subtitle, image, breadcrumb }: PageHeroProps) {
+export default function PageHero({ label, title, subtitle, image, breadcrumb, children }: PageHeroProps) {
   return (
     <section
       className="page-hero"
@@ -44,6 +45,13 @@ export default function PageHero({ label, title, subtitle, image, breadcrumb }: 
         {subtitle && (
           <Reveal delay={280}>
             <p className="page-hero__subtitle">{subtitle}</p>
+          </Reveal>
+        )}
+        {children && (
+          <Reveal delay={380}>
+            <div className="page-hero__actions">
+              {children}
+            </div>
           </Reveal>
         )}
       </div>

@@ -5,6 +5,8 @@ import ServicesPage from './pages/ServicesPage';
 import ProductsPage from './pages/ProductsPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
+import BlogPage from './pages/BlogPage';
+import ArticlePage from './pages/ArticlePage';
 
 export default function App() {
   return (
@@ -15,6 +17,8 @@ export default function App() {
         <Route path="produits" element={<ProductsPage />} />
         <Route path="a-propos" element={<AboutPage />} />
         <Route path="contact" element={<ContactPage />} />
+        <Route path="blog" element={<BlogPage />} />
+        <Route path="blog/:id" element={<ArticlePage />} />
       </Route>
     </Routes>
   );
