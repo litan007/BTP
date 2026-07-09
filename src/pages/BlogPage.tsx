@@ -4,6 +4,8 @@ import PageHero from '../components/PageHero';
 import Newsletter from '../components/Newsletter';
 import { blogPosts, getCategories } from '../data/blogPosts';
 
+import blogHero from "../assets/btp1.jpg";
+
 export default function BlogPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
@@ -36,7 +38,7 @@ export default function BlogPage() {
         label="ACTUALITÉS"
         title="Notre Blog"
         subtitle="Décryptage, innovations et actualités du secteur de la construction. Restez informés des dernières tendances du BTP."
-        image="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2064&auto=format&fit=crop"
+        image={blogHero}
         breadcrumb={[
           { label: 'Accueil', to: '/' },
           { label: 'Blog' }

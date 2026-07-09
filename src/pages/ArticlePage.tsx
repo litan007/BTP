@@ -2,6 +2,7 @@ import { useParams, Link, Navigate } from 'react-router-dom';
 import { blogPosts } from '../data/blogPosts';
 import Comments from '../components/Comments';
 
+
 export default function ArticlePage() {
   const { id } = useParams<{ id: string }>();
   const post = blogPosts.find(p => p.id === id);

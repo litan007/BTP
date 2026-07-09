@@ -1,3 +1,10 @@
+
+import bat1 from "../assets/btp3.jpg";
+import bat2 from "../assets/btp4.jpg";
+import bat3 from "../assets/btp5.jpg";
+import bat4 from "../assets/btp7.jpg";
+import bat5 from "../assets/btp6.jpg";
+import bat6 from "../assets/btp7.jpg";
 export interface Comment {
   id: string;
   author: string;
@@ -82,7 +89,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: "Ingénieure Bâtiment Durable",
     authorBio: "Experte en éco-construction avec 15 ans d'expérience. Passionnée par les matériaux innovants et l'impact carbone du secteur.",
     authorPhoto: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop",
-    imageUrl: "https://images.unsplash.com/photo-1541888081622-14de6eb7b028?q=80&w=2070&auto=format&fit=crop",
+    imageUrl: bat1,
     readTime: "5 min",
     views: 1245,
     tags: ["Construction", "Durable", "Innovation", "Matériaux"],
@@ -109,7 +116,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: "Chef de Chantier Rénovation",
     authorBio: "Spécialiste de la rénovation thermique des bâtiments anciens. Il partage ses astuces pratiques de terrain.",
     authorPhoto: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop",
-    imageUrl: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=2070&auto=format&fit=crop",
+    imageUrl: bat2,
     readTime: "7 min",
     views: 890,
     tags: ["Rénovation", "Énergie", "Tutoriel"],
@@ -135,7 +142,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: "Directeur de l'Innovation",
     authorBio: "Toujours à l'affût des dernières technologies, Marc aide les entreprises à digitaliser leurs processus de construction.",
     authorPhoto: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=200&auto=format&fit=crop",
-    imageUrl: "https://images.unsplash.com/photo-1504307651254-35680f356f12?q=80&w=2074&auto=format&fit=crop",
+    imageUrl: bat3,
     readTime: "6 min",
     views: 2100,
     tags: ["Sécurité", "IoT", "Innovation", "Tech"],
@@ -161,7 +168,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: "Architecte Urbaniste",
     authorBio: "Conceptrice d'espaces urbains résilients. Elle milite pour une architecture qui respecte le vivant.",
     authorPhoto: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=200&auto=format&fit=crop",
-    imageUrl: "https://images.unsplash.com/photo-1590674899484-d5640e854abe?q=80&w=2067&auto=format&fit=crop",
+    imageUrl: bat4,
     readTime: "8 min",
     views: 1560,
     tags: ["Matériaux", "Béton", "Écologie"],
@@ -184,7 +191,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: "Rédacteur Technique",
     authorBio: "Journaliste spécialisé dans l'industrie et la construction.",
     authorPhoto: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&auto=format&fit=crop",
-    imageUrl: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop",
+    imageUrl: bat5,
     readTime: "4 min",
     views: 3200,
     tags: ["Événement", "BATIMAT", "Innovation"],
@@ -207,7 +214,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: "Consultante BTP",
     authorBio: "Accompagne les maîtres d'ouvrage dans la réalisation de projets complexes.",
     authorPhoto: "https://images.unsplash.com/photo-1598550874175-4d0ef436c909?q=80&w=200&auto=format&fit=crop",
-    imageUrl: "https://images.unsplash.com/photo-1533604071378-5e921d4c243a?q=80&w=2074&auto=format&fit=crop",
+    imageUrl: bat6,
     readTime: "5 min",
     views: 950,
     tags: ["Bois", "Témoignage", "Chantier"],
