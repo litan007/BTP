@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getCategories, getTags, blogPosts, BlogPost } from '../data/blogPosts';
+import { getCategories, getTags, blogPosts } from '../data/blogPosts';
+import type { BlogPost } from '../data/blogPosts';
 
 interface BlogSidebarProps {
   onSearch: (term: string) => void;

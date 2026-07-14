@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react';
+import { useState, useRef, useEffect, type FormEvent } from 'react';
 import PageHero from '../components/PageHero';
 import Reveal from '../components/Reveal';
 import Button from '../components/Button';
@@ -10,6 +10,7 @@ interface FormData {
   email: string;
   phone: string;
   project: string;
+  model: string;
   message: string;
 }
 
@@ -18,15 +19,27 @@ const initialForm: FormData = {
   email: '',
   phone: '',
   project: 'construction',
+  model: '',
   message: '',
 };
 
 export default function ContactPage() {
   const [form, setForm] = useState<FormData>(initialForm);
   const [submitted, setSubmitted] = useState(false);
-  const [selectedModel, setSelectedModel] = useState<string | null>(null);
+  const [modelOpen, setModelOpen] = useState(false);
+  const modelRef = useRef<HTMLDivElement>(null);
 
-  const selectedProject = selectedModel ? projects.find((p) => p.id === selectedModel) : null;
+  const selectedProject = form.model ? projects.find((p) => p.id === form.model) : null;
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (modelRef.current && !modelRef.current.contains(e.target as Node)) {
+        setModelOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -49,31 +62,6 @@ export default function ContactPage() {
           { label: 'Contact' },
         ]}
       />
-
-      <section className="page-section">
-        <div className="container">
-          <Reveal className="contact-models">
-            <span className="label">NOS MODÈLES</span>
-            <h2 className="section-title">Choisissez votre modèle</h2>
-            <p className="contact-models__intro">Cliquez sur un modèle pour nous indiquer votre préférence.</p>
-            <div className="contact-models__grid">
-              {projects.map((p) => (
-                <button
-                  key={p.id}
-                  className={`contact-models__card${selectedModel === p.id ? ' contact-models__card--active' : ''}`}
-                  onClick={() => setSelectedModel(p.id === selectedModel ? null : p.id)}
-                >
-                  <img src={p.image} alt={p.title} loading="lazy" />
-                  <div className="contact-models__card-footer">
-                    <strong>{p.title}</strong>
-                    <span>{p.type}</span>
-                  </div>
-                </button>
-              ))}
-            </div>
-          </Reveal>
-        </div>
-      </section>
 
       <section className="page-section">
         <div className="container contact-grid">
@@ -167,28 +155,81 @@ export default function ContactPage() {
                   />
                 </label>
 
-                <label className="form-field">
-                  <span>Type de projet *</span>
-                  <select
-                    required
-                    value={form.project}
-                    onChange={(e) => update('project', e.target.value)}
-                  >
-                    <option value="construction">Construction neuve</option>
-                    <option value="renovation">Rénovation</option>
-                    <option value="extension">Extension</option>
-                    <option value="autre">Autre</option>
-                  </select>
-                </label>
+                <div className="form-row">
+                  <label className="form-field">
+                    <span>Type de projet *</span>
+                    <select
+                      required
+                      value={form.project}
+                      onChange={(e) => update('project', e.target.value)}
+                    >
+                      <option value="construction">Construction neuve</option>
+                      <option value="renovation">Rénovation</option>
+                      <option value="extension">Extension</option>
+                      <option value="autre">Autre</option>
+                    </select>
+                  </label>
+
+                  <div className="form-field">
+                    <span>Modèle souhaité</span>
+                    <div className="model-select" ref={modelRef}>
+                      <button
+                        type="button"
+                        className={`model-select__trigger${modelOpen ? ' model-select__trigger--open' : ''}`}
+                        onClick={() => setModelOpen(!modelOpen)}
+                      >
+                        {selectedProject ? (
+                          <div className="model-select__selected">
+                            <img src={selectedProject.image} alt={selectedProject.title} />
+                            <span>{selectedProject.title}</span>
+                          </div>
+                        ) : (
+                          <span className="model-select__placeholder">Aucun modèle sélectionné</span>
+                        )}
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+                      </button>
+                      {modelOpen && (
+                        <div className="model-select__dropdown">
+                          <button
+                            type="button"
+                            className={`model-select__option${form.model === '' ? ' model-select__option--active' : ''}`}
+                            onClick={() => { update('model', ''); setModelOpen(false); }}
+                          >
+                            <span className="model-select__option-empty">Aucun modèle</span>
+                          </button>
+                          {projects.map((p) => (
+                            <button
+                              type="button"
+                              key={p.id}
+                              className={`model-select__option${form.model === p.id ? ' model-select__option--active' : ''}`}
+                              onClick={() => { update('model', p.id); setModelOpen(false); }}
+                            >
+                              <img src={p.image} alt={p.title} />
+                              <div className="model-select__option-info">
+                                <strong>{p.title}</strong>
+                                <span>{p.type}</span>
+                              </div>
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
 
                 {selectedProject && (
                   <div className="contact-form__model">
-                    <span>Modèle sélectionné</span>
                     <div className="contact-form__model-preview">
                       <img src={selectedProject.image} alt={selectedProject.title} />
-                      <div>
+                      <div className="contact-form__model-info">
                         <strong>{selectedProject.title}</strong>
-                        <p>{selectedProject.type} — {selectedProject.price}</p>
+                        <span className="contact-form__model-type">{selectedProject.type}</span>
+                        <div className="contact-form__model-details">
+                          {selectedProject.surface && <span>{selectedProject.surface}</span>}
+                          {selectedProject.location && <span>{selectedProject.location}</span>}
+                          {selectedProject.duration && <span>{selectedProject.duration}</span>}
+                          {selectedProject.price && <span className="contact-form__model-price">{selectedProject.price}</span>}
+                        </div>
                       </div>
                     </div>
                   </div>

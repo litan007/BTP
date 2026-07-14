@@ -36,7 +36,7 @@ export default function BlogPage() {
         label="ACTUALITÉS"
         title="Notre Blog"
         subtitle="Décryptage, innovations et actualités du secteur de la construction. Restez informés des dernières tendances du BTP."
-        image="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2064&auto=format&fit=crop"
+        image="/photos/blog-construction-durable.jpg"
         breadcrumb={[
           { label: 'Accueil', to: '/' },
           { label: 'Blog' }
