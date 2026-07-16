@@ -336,6 +336,11 @@ main, .header, .footer {
   left: 0; width: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent-light)); border-radius: 2px; transition: width 0.4s var(--ease-spring); }
 .nav__link:hover, .nav__link--active { color: var(--text-white); }
 .nav__link--active::after, .nav__link:hover::after { width: 100%; }
+.nav__link--signup { color: var(--accent-light); font-weight: 600; }
+.nav__link--signup::after { background: linear-gradient(90deg, var(--accent), var(--accent-light)); }
+.nav__link--logout { color: #fca5a5; font-weight: 600; }
+.nav__link--logout::after { background: linear-gradient(90deg, #ef4444, #fca5a5); }
+.nav__link--logout:hover { color: #fff; }
 .burger { display: none; flex-direction: column; justify-content: center; gap: 6px; width: 40px; height: 40px; padding: 8px; border-radius: var(--radius); }
 .burger span { display: block; width: 22px; height: 2px; background: var(--text-white); border-radius: 2px; transition: var(--transition); transform-origin: center; }
 .burger--open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
@@ -598,6 +603,59 @@ main, .header, .footer {
 .contact-models__card-footer { padding: 14px 16px; }
 .contact-models__card-footer strong { display: block; font-family: var(--font-display); font-size: 0.9rem; font-weight: 700; }
 .contact-models__card-footer span { font-size: 0.78rem; color: var(--text-muted); }
+
+/* Auth / Admin */
+.auth-page { min-height: 100vh; display: flex; align-items: center; padding-top: 120px; }
+.auth-page__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: stretch; }
+.auth-page__panel { background: var(--bg-glass); border: 1px solid rgba(255,255,255,0.06); border-radius: var(--radius-xl); padding: 40px; backdrop-filter: blur(24px); box-shadow: var(--shadow-card); }
+.auth-page__panel--intro { display: flex; flex-direction: column; justify-content: center; min-height: 100%; }
+.auth-page__text { color: var(--text-muted); line-height: 1.8; margin: 20px 0 0; max-width: 520px; }
+.auth-page__note { margin-top: 28px; display: grid; gap: 8px; padding: 18px 20px; border-radius: var(--radius-lg); background: rgba(249,115,22,0.08); border: 1px solid rgba(249,115,22,0.18); }
+.auth-page__note strong { font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-light); }
+.auth-form h2 { font-family: var(--font-display); font-size: 1.6rem; margin-bottom: 8px; }
+.auth-form p { color: var(--text-muted); margin-bottom: 22px; }
+.auth-form__error { color: #fb7185; margin-bottom: 16px; }
+.auth-form__success { background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.25); border-radius: var(--radius-lg); padding: 24px; margin-bottom: 20px; text-align: center; }
+.auth-form__success p { color: #4ade80; margin-bottom: 16px; font-weight: 600; }
+.auth-form__success .btn { margin: 6px; }
+.auth-form__links { display: flex; justify-content: space-between; gap: 16px; margin-top: 18px; flex-wrap: wrap; }
+.auth-form__links a { color: var(--accent-light); font-size: 0.88rem; }
+.admin-page__header { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 28px; }
+.admin-page__subtitle { color: var(--text-muted); margin-top: 12px; max-width: 680px; }
+.admin-page__actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: flex-end; }
+.admin-page__grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 28px; }
+.admin-toggle { display: flex; align-items: center; gap: 10px; margin: 6px 0 22px; color: var(--text-muted); font-size: 0.9rem; }
+.admin-toggle input { width: 16px; height: 16px; accent-color: var(--accent); }
+.admin-list h2 { font-family: var(--font-display); font-size: 1.4rem; margin-bottom: 8px; }
+.admin-list p { color: var(--text-muted); margin-bottom: 24px; }
+.admin-list__items { display: grid; gap: 14px; }
+.admin-empty { padding: 18px; border-radius: var(--radius-lg); background: rgba(255,255,255,0.03); color: var(--text-muted); }
+.admin-model-card { display: flex; gap: 14px; align-items: center; padding: 14px; border-radius: var(--radius-lg); background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); }
+.admin-model-card img { width: 82px; height: 62px; object-fit: cover; border-radius: 10px; flex-shrink: 0; }
+.admin-model-card strong { display: block; font-size: 0.98rem; margin-bottom: 4px; }
+.admin-model-card p { margin: 0 0 4px; color: var(--text-muted); }
+.admin-model-card span { font-size: 0.78rem; color: var(--accent-light); }
+
+.products-admin { margin-bottom: 56px; padding: 32px; background: var(--bg-glass); border: 1px solid rgba(255,255,255,0.06); border-radius: var(--radius-xl); box-shadow: var(--shadow-card); }
+.products-admin__header { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; margin-bottom: 24px; }
+.products-admin__text { color: var(--text-muted); max-width: 700px; margin-top: 16px; line-height: 1.8; }
+.products-admin__badge { padding: 10px 16px; border-radius: 999px; background: rgba(249,115,22,0.12); color: var(--accent-light); border: 1px solid rgba(249,115,22,0.2); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+.products-admin__form { display: flex; flex-direction: column; gap: 0; }
+.products-private-list { margin-top: 50px; }
+.products-private-list__header { margin-bottom: 20px; }
+.products-private-list__header p { color: var(--text-muted); margin-top: 8px; }
+.products-private-list__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+.products-private-card { display: flex; gap: 14px; align-items: center; padding: 14px; border-radius: var(--radius-lg); background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); }
+.products-private-card img { width: 88px; height: 66px; object-fit: cover; border-radius: 10px; flex-shrink: 0; }
+.products-private-card strong { display: block; margin-bottom: 4px; }
+.products-private-card p { margin: 0 0 4px; color: var(--text-muted); }
+.products-private-card span { font-size: 0.78rem; color: var(--accent-light); }
+
+@media (max-width: 980px) {
+  .auth-page__grid, .admin-page__grid { grid-template-columns: 1fr; }
+  .admin-page__header { align-items: flex-start; flex-direction: column; }
+  .products-admin__header { flex-direction: column; }
+}
 
 /* Product Detail – New Design */
 .pd-hero { padding: 120px 0 0; }

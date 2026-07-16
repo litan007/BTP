@@ -5,7 +5,7 @@ export interface NavLinkItem {
 }
 
 export const navLinks: NavLinkItem[] = [
-  { to: '/', label: 'Accueil', end: true },
+  { to: '/accueil', label: 'Accueil', end: true },
   { to: '/blog', label: 'Blog' },
   { to: '/services', label: 'Nos Services' },
   { to: '/produits', label: 'Produits' },
@@ -14,7 +14,7 @@ export const navLinks: NavLinkItem[] = [
 ];
 
 export const footerLinks = [
-  { to: '/', label: 'Accueil' },
+  { to: '/accueil', label: 'Accueil' },
   { to: '/blog', label: 'Blog' },
   { to: '/services', label: 'Services' },
   { to: '/produits', label: 'Produits' },

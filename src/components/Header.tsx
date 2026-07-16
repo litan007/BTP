@@ -1,12 +1,16 @@
 import { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import Logo from './Logo';
 import Button from './Button';
 import { navLinks } from '../data/navigation';
+import { useAuth } from '../auth/AuthContext';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+  const isAdmin = user?.role === 'admin';
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -23,6 +27,12 @@ export default function Header() {
   }, [menuOpen]);
 
   const closeMenu = () => setMenuOpen(false);
+
+  const handleLogout = () => {
+    logout();
+    closeMenu();
+    navigate('/login', { replace: true });
+  };
 
   return (
     <header className={`header${scrolled ? ' header--scrolled' : ''}`}>
@@ -41,11 +51,36 @@ export default function Header() {
               <span>{link.label}</span>
             </NavLink>
           ))}
+          {isAdmin && (
+            <>
+              <Link
+                to="/signup"
+                state={{ role: 'admin' }}
+                className="nav__link nav__link--signup"
+                onClick={closeMenu}
+              >
+                <span>S'inscrire</span>
+              </Link>
+              <button
+                type="button"
+                className="nav__link nav__link--logout"
+                onClick={handleLogout}
+              >
+                <span>Déconnexion</span>
+              </button>
+            </>
+          )}
         </nav>
 
-        <Button to="/contact" size="sm" className="header__cta btn--glow">
-          DEVIS GRATUIT
-        </Button>
+        {user ? (
+          <Button to="/produits" size="sm" className="header__cta btn--glow">
+            MODÈLES PRIVÉS
+          </Button>
+        ) : (
+          <Button to="/login" size="sm" className="header__cta btn--glow">
+            SE CONNECTER
+          </Button>
+        )}
 
         <button
           className={`burger${menuOpen ? ' burger--open' : ''}`}
