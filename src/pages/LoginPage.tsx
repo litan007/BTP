@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { FormEvent } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext';
 
 export default function LoginPage() {
@@ -57,6 +57,10 @@ export default function LoginPage() {
           <button type="submit" className="btn btn--primary btn--lg btn--full btn--glow">
             <span className="btn__label">Se connecter</span>
           </button>
+
+          <div className="auth-form__links">
+            <Link to="/forgot-password">Mot de passe oublié ?</Link>
+          </div>
         </form>
       </div>
     </section>
