@@ -109,13 +109,6 @@ export default function BlogPage() {
                           <div className="blog-card__category">{featuredPost.category}</div>
                         </div>
                         <div className="blog-featured__content">
-                          <div className="blog-card__meta">
-                            <span>{featuredPost.date}</span>
-                            <span className="blog-card__meta-sep">•</span>
-                            <span>{featuredPost.views} vues</span>
-                            <span className="blog-card__meta-sep">•</span>
-                            <span>{featuredPost.comments.length} commentaires</span>
-                          </div>
                           <h2 className="blog-featured__title">{featuredPost.title}</h2>
                           <p className="blog-featured__excerpt">{featuredPost.excerpt}</p>
                           <div className="blog-featured__footer">
@@ -149,11 +142,6 @@ export default function BlogPage() {
                           <div className="blog-card__category">{post.category}</div>
                         </div>
                         <div className="blog-card__content">
-                          <div className="blog-card__meta">
-                            <span>{post.date}</span>
-                            <span className="blog-card__meta-sep">•</span>
-                            <span>{post.views} vues</span>
-                          </div>
                           <h3 className="blog-card__title">{post.title}</h3>
                           <p className="blog-card__excerpt">{post.excerpt}</p>
                           <div className="blog-card__footer">
