@@ -4,7 +4,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext';
 
 export default function LoginPage() {
-  const { login, user, enterAsClient } = useAuth();
+  const { login, user } = useAuth();
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('adminbatir');
@@ -56,18 +56,6 @@ export default function LoginPage() {
 
           <button type="submit" className="btn btn--primary btn--lg btn--full btn--glow">
             <span className="btn__label">Se connecter</span>
-          </button>
-
-          <button
-            type="button"
-            className="btn btn--outline btn--lg btn--full"
-            style={{ marginTop: '12px' }}
-            onClick={() => {
-              enterAsClient();
-              navigate('/accueil', { replace: true });
-            }}
-          >
-            <span className="btn__label">Entrer comme client</span>
           </button>
         </form>
       </div>

@@ -49,7 +49,7 @@ export default function AdminModelsPage() {
   };
 
   if (!user) {
-    navigate('/login');
+    navigate('/admin');
     return null;
   }
 
@@ -79,7 +79,7 @@ export default function AdminModelsPage() {
               className="btn btn--outline"
               onClick={() => {
                 logout();
-                navigate('/login');
+                navigate('/admin');
               }}
             >
               Se déconnecter

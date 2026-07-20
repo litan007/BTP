@@ -19,8 +19,18 @@ export default function App() {
   return (
     <AuthProvider>
       <Routes>
-        <Route path="/" element={<LoginPage />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="accueil" element={<HomePage />} />
+          <Route path="services" element={<ServicesPage />} />
+          <Route path="produits" element={<ProductsPage />} />
+          <Route path="produits/:id" element={<ProductDetailPage />} />
+          <Route path="a-propos" element={<AboutPage />} />
+          <Route path="contact" element={<ContactPage />} />
+          <Route path="blog" element={<BlogPage />} />
+          <Route path="blog/:id" element={<ArticlePage />} />
+        </Route>
+        <Route path="/admin" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
         <Route
@@ -31,16 +41,6 @@ export default function App() {
             </ProtectedRoute>
           }
         />
-        <Route element={<ProtectedRoute><Layout /></ProtectedRoute>}>
-          <Route path="accueil" element={<HomePage />} />
-          <Route path="services" element={<ServicesPage />} />
-          <Route path="produits" element={<ProductsPage />} />
-          <Route path="produits/:id" element={<ProductDetailPage />} />
-          <Route path="a-propos" element={<AboutPage />} />
-          <Route path="contact" element={<ContactPage />} />
-          <Route path="blog" element={<BlogPage />} />
-          <Route path="blog/:id" element={<ArticlePage />} />
-        </Route>
       </Routes>
     </AuthProvider>
   );

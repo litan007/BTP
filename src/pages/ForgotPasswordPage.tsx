@@ -58,7 +58,7 @@ export default function ForgotPasswordPage() {
               <button
                 type="button"
                 className="btn btn--primary btn--sm"
-                onClick={() => navigate('/login')}
+                onClick={() => navigate('/admin')}
               >
                 <span className="btn__label">Se connecter</span>
               </button>
@@ -87,7 +87,7 @@ export default function ForgotPasswordPage() {
           )}
 
           <div className="auth-form__links">
-            <Link to="/login">Retour à la connexion</Link>
+            <Link to="/admin">Retour à la connexion</Link>
             <Link to="/signup">S'inscrire</Link>
           </div>
         </form>

@@ -31,7 +31,7 @@ export default function Header() {
   const handleLogout = () => {
     logout();
     closeMenu();
-    navigate('/login', { replace: true });
+    navigate('/admin', { replace: true });
   };
 
   return (
@@ -77,7 +77,7 @@ export default function Header() {
             MODÈLES PRIVÉS
           </Button>
         ) : (
-          <Button to="/login" size="sm" className="header__cta btn--glow">
+          <Button to="/admin" size="sm" className="header__cta btn--glow">
             SE CONNECTER
           </Button>
         )}

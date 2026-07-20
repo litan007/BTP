@@ -120,7 +120,7 @@ export default function SignupPage() {
           )}
 
           <div className="auth-form__links">
-            <Link to="/login">Retour à la connexion</Link>
+            <Link to="/admin">Retour à la connexion</Link>
             <Link to="/forgot-password">Mot de passe oublié ?</Link>
             {isAdminCreator && (
               <Link to="/accueil">Retour à l'accueil</Link>
