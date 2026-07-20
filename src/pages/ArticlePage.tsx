@@ -32,31 +32,17 @@ export default function ArticlePage() {
 
   return (
     <article className="article-page">
-      {/* Article Hero */}
-      <section className="article-hero">
-        <div className="article-hero__bg" style={{ backgroundImage: `url(${post.imageUrl})` }}></div>
-        <div className="article-hero__overlay"></div>
+      {/* Article Header - Image left, Content right */}
+      <section className="article-header">
         <div className="container">
-          <div className="article-hero__content reveal reveal--up reveal--visible">
-            <div className="breadcrumb">
-              <Link to="/">Accueil</Link>
-              <span className="breadcrumb__sep">/</span>
-              <Link to="/blog">Blog</Link>
-              <span className="breadcrumb__sep">/</span>
-              <span className="breadcrumb__current">{post.category}</span>
+          <div className="article-header__grid">
+            <div className="article-header__image-wrap">
+              <img src={post.imageUrl} alt={post.title} className="article-header__image" />
             </div>
-            
-            <div className="article-meta">
-              <span className="article-meta__category">{post.category}</span>
-              <span className="article-meta__sep">•</span>
-              <span>{post.date}</span>
-              <span className="article-meta__sep">•</span>
-              <span>{post.readTime} de lecture</span>
-              <span className="article-meta__sep">•</span>
-              <span>{post.views} vues</span>
+            <div className="article-header__content reveal reveal--up reveal--visible">
+              <h1 className="article-title">{post.title}</h1>
+              <p className="article-header__excerpt">{post.excerpt}</p>
             </div>
-            
-            <h1 className="article-title">{post.title}</h1>
           </div>
         </div>
       </section>
